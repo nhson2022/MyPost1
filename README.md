@@ -81,3 +81,20 @@ config.action_mailer.default_url_options = { host: 'localhost', port: 3006 }
 <%= yield %>
 </div>
 ```
+
+## Setup Active Storage
+```
+bin/rails active_storage:install
+bin/rails db:migrate
+```
+
+## Setup Action Text
+```
+bin/rails action_text:install
+bin/rails db:migrate
+```
+
+## Create controller pages home and info**
+```bash
+rails g controller pages home
+```
