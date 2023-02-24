@@ -98,3 +98,9 @@ bin/rails db:migrate
 ```bash
 rails g controller pages home
 ```
+
+## Create Post
+```bash
+rails g scaffold Post content user:references
+bin/rails db:migrate
+```
