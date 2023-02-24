@@ -120,3 +120,10 @@ bin/rails db:migrate
 
 Refs:
 - https://guides.rubyonrails.org/association_basics.html#the-has-many-through-association
+
+**Following - Followed users**
+```rb
+# app/models/user.rb
+has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+has_many :following, through: :active_relationships, source: :followed
+```
