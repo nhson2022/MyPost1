@@ -62,3 +62,22 @@ NOTE: You can add name or other properties to user model
 ```rb
 config.action_mailer.default_url_options = { host: 'localhost', port: 3006 }
 ```
+
+**Update app/views/layouts/application.html.erb**
+```html
+<div class="container">
+<% if notice.present? %>
+<div class="alert alert-primary mt-4" role="alert">
+<%= notice %>
+</div>
+<% end %>
+
+<% if alert.present? %>
+<div class="alert alert-danger mt-4" role="alert">
+<%= alert %>
+</div>
+<% end %>
+
+<%= yield %>
+</div>
+```
