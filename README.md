@@ -56,3 +56,9 @@ rails g devise:views
 rails generate devise User
 rails db:migrate
 ```
+NOTE: You can add name or other properties to user model
+
+**Update config/environments/development.rb**
+```rb
+config.action_mailer.default_url_options = { host: 'localhost', port: 3006 }
+```
