@@ -46,3 +46,13 @@ Update sass config `app/assets/stylesheets/application.sass.scss`
 ```
 ./bin/dev
 ```
+
+Goto page and follow instructions https://github.com/heartcombo/devise
+```bash
+bundle add devise
+rails generate devise:install
+rails g devise:views
+
+rails generate devise User
+rails db:migrate
+```
