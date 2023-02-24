@@ -127,3 +127,17 @@ Refs:
 has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
 has_many :following, through: :active_relationships, source: :followed
 ```
+
+SQL query to get following users
+```sql
+SELECT `users`.* FROM `users`
+INNER JOIN `relationships` ON `users`.`id` = `relationships`.`followed_id`
+WHERE `relationships`.`follower_id` = 1
+```
+
+**Followers - Follower users**
+```rb
+# app/models/user.rb
+has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+has_many :followers, through: :passive_relationships, source: :follower
+```
