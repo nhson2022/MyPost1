@@ -104,3 +104,19 @@ rails g controller pages home
 rails g scaffold Post content user:references
 bin/rails db:migrate
 ```
+
+ERD Tools
+- https://app.diagrams.net/
+
+## Following User
+```bash
+rails generate model Relationship follower_id:integer:index followed_id:integer:index
+
+# update migration and add combine unique index
+add_index :relationships, [:follower_id, :followed_id], unique: true
+
+bin/rails db:migrate
+```
+
+Refs:
+- https://guides.rubyonrails.org/association_basics.html#the-has-many-through-association
