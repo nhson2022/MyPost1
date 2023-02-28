@@ -141,3 +141,46 @@ WHERE `relationships`.`follower_id` = 1
 has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
 has_many :followers, through: :passive_relationships, source: :follower
 ```
+
+**Implement follow, unfollow methods**
+```rb
+# models/user.rb
+
+# Follows a user.
+def follow(other_user)
+return if other_user.id == id
+
+if following?(other_user)
+unfollow(other_user)
+return
+end
+
+following << other_user
+end
+
+# Unfollows a user.
+def unfollow(other_user)
+following.delete(other_user)
+end
+
+# Returns true if the current user is following the other user.
+def following?(other_user)
+following.include?(other_user)
+end
+
+def name
+"#{first_name} #{last_name}"
+end
+
+def self.available_users(current_user)
+return all unless current_user.present?
+
+where.not(id: current_user.id)
+end
+
+```
+
+**Create profile page**
+```
+rails g controller profiles show my
+```
