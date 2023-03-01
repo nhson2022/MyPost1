@@ -6,6 +6,7 @@ class ProfilesController < ApplicationController
   end
 
   def my
+    @posts = current_user.ordered_posts(params)
   end
 
   # Method: POST
@@ -17,7 +18,7 @@ class ProfilesController < ApplicationController
       format.json { render json: { message: "Success" }, status: :created }
     end
   end
-  
+
   private
 
   def set_profile

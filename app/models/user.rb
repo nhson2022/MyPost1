@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :follower
 
+  has_many :posts
+
   # Follows a user.
   def follow(other_user)
     return if other_user.id == id
@@ -36,6 +38,10 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def ordered_posts(params)
+    posts.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
+  end
+  
   def self.available_users(current_user)
     return all unless current_user.present?
 

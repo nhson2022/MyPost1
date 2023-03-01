@@ -9,6 +9,7 @@
 		<%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
 	</head>
 	<body>
+	 <%= render 'layouts/header' %>
 		<div class="container">
 			<% if notice.present? %>
 				<div class="alert alert-primary mt-4" role="alert">

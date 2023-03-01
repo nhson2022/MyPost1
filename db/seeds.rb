@@ -5,6 +5,9 @@ users = [
   { first_name: "Son", last_name: "Nguyen", email: "son@example.com" },
   { first_name: "Duy", last_name: "Ngo", email: "duy@example.com" },
   { first_name: "Vui", last_name: "Le", email: "vui@example.com" },
+  { first_name: "Thi", last_name: "Truong", email: "thi@example.com" },
+  { first_name: "Nhi", last_name: "Le", email: "nhi@example.com" },
+  { first_name: "Thao", last_name: "Doan", email: "thao@example.com" },
 ]
 users.each do |item|
   user = User.where(email: item[:email]).first_or_create do |new_user|

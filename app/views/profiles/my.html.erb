@@ -1,2 +1,38 @@
-<h1>Profiles#my</h1>
-<p>Find me in app/views/profiles/my.html.erb</p>
+<div class="row py-4">
+  <div class="col-lg-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= current_user.name %></h5>
+        <p class="card-text text-muted"><%= current_user.email %></p>
+        <div class="row">
+          <div class="col">
+            <h4>Following</h4>
+            <p><%= current_user.following.count %></p>
+          </div>
+          <div class="col">
+            <h4>Followers</h4>
+            <p><%= current_user.followers.count %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-9">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-6">
+            <h5 class="card-title">Posts</h5>
+          </div>
+          <div class="col-lg-6 text-end">
+            <%= link_to "New post", new_post_path, class: 'btn btn-primary' %>
+          </div>
+        </div>
+        <% @posts.each do |post| %>
+          <%= render "pages/post", post: post %>
+        <% end %>
+        <%= will_paginate @posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+      </div>
+    </div>
+  </div>
+</div>

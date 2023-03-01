@@ -1,0 +1,13 @@
+<h4>Users</h4>
+<% User.available_users(current_user).each do |user| %>
+  <div class="row">
+    <div class="col">
+      <a href="<%= profile_path(user.id) %>">
+        <h5><%= user.name %></h5>
+      </a>
+      <p class="text-muted"><%= user.email %></p>
+    </div>
+    <div class="col">
+    </div>
+  </div>
+<% end %>

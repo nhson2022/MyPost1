@@ -48,9 +48,17 @@ gem "bootsnap", require: false
 # Use Sass to process CSS
 gem "sassc-rails"
 
+# Use Devise
+gem "devise", "~> 4.9"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
+
 gem 'htmlbeautifier'
+
+gem 'will_paginate', '~> 3.3'
+# gem 'will_paginate-bootstrap'
+gem 'will_paginate-bootstrap-style', '~> 0.2.4'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -75,4 +83,4 @@ group :test do
   gem "webdrivers"
 end
 
-gem "devise", "~> 4.9"
+
