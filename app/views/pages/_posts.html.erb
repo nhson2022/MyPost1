@@ -1,0 +1,15 @@
+<h3>Posts</h3>
+<% unless current_user.present? %>
+  <p>You have to login to see the posts.</p>
+<% end %>
+<% if current_user.present? %>
+  <% unless posts.present? %>
+    <div class="alert alert-warning" role="alert">
+      No feed items found
+    </div>
+  <% end %>
+  <% posts.each do |post| %>
+    <%= render "pages/post", post: post %>
+  <% end %>
+  <%= will_paginate @posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+<% end %>

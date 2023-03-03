@@ -41,7 +41,16 @@ class User < ApplicationRecord
   def ordered_posts(params)
     posts.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
   end
-  
+
+  def feeds(params)
+    # lay danh sach id nhung nguoi minh quan tam
+    # lay nhung chu de, bai viet cua nhung nguoi minh quan tam
+    following_ids = following.ids
+    Post.includes(:user).where(user_id: following_ids)
+      .order(created_at: :desc)
+      .paginate(page: params[:page], per_page: 5)
+  end
+
   def self.available_users(current_user)
     return all unless current_user.present?
 

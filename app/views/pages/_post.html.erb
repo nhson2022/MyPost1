@@ -1,0 +1,13 @@
+<div class="card my-2">
+  <div class="card-body">
+    <div>
+      <strong><%= post.user.name %></strong>
+    </div>
+    <div class="card-text">
+      <%= post.content %>
+    </div>
+  </div>
+  <div class="card-footer">
+    <%= local_time_ago(post.created_at) %>
+  </div>
+</div>
